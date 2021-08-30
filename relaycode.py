@@ -15,7 +15,7 @@ pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
 
 class Relay:
-    def __init__(self, numb, button, status, ind):
+    def __init__(self, numb, button, status, id):
         self.numb = numb
         self.button = button
         self.status = status
@@ -30,7 +30,7 @@ def RelayController(rel, reloff1, reloff2):
     global R2
     global R3
 
-    print("Device %d Selected" % rel.ind)
+    #print("Device %d Selected" % rel.id)
     pi.gpio_trigger(rel.button, 10, 1) #needs to be looked at in terms of polarity of buttons and potential necessity of pullup resistor
     rel.status = 1
     if reloff1.status == 1:
