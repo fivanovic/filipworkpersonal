@@ -67,7 +67,7 @@ while True:
         RelayController(R2,R1,R3)
 
     elif selection == "3":
-        Relaycontroller(R3,R2,R1)
+        RelayController(R3,R2,R1)
 
     elif selection == "4":
         RelayClear(R1,R2,R3)
