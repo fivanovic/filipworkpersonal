@@ -30,14 +30,14 @@ def RelayController(rel, reloff1, reloff2):
     global R2
     global R3
 
-    #print("Device %d Selected" % rel.id)
+    print("Device %d Selected" % rel.id)
     pi.gpio_trigger(rel.button, 10, 1) #needs to be looked at in terms of polarity of buttons and potential necessity of pullup resistor
     rel.status = 1
     if reloff1.status == 1:
-        pi.gpio_trigger(reloff1.button)
+        pi.gpio_trigger(reloff1.button, 10, 1)
         reloff1.status = 0
     if reloff2.status == 1:
-        pi.gpio_trigger(reloff2.button)
+        pi.gpio_trigger(reloff2.button, 10 ,1)
         reloff2.status = 0
     pi.write(reloff1.numb, 1)
     pi.write(reloff2.numb, 1)
@@ -46,13 +46,13 @@ def RelayController(rel, reloff1, reloff2):
 def RelayClear(rel1, rel2, rel3):
 
     if rel1.status == 1:
-        pi.gpio_trigger(rel1.button)
+        pi.gpio_trigger(rel1.button, 10, 1)
         rel1.status = 0
     if rel2.status == 1:
-        pi.gpio_trigger(rel2.button)
+        pi.gpio_trigger(rel2.button, 10, 1)
         rel2.status = 0
     if rel3.status == 1:
-        pi.gpio_trigger(rel3.button)
+        pi.gpio_trigger(rel3.button, 10, 1)
         rel3.status = 0
     pi.write(rel1.numb, 1)
     pi.write(rel2.numb, 1)
