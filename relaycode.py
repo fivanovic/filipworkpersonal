@@ -4,12 +4,15 @@ pi = pigpio.pi()
 RELAY1 = 26
 RELAY2 = 20
 RELAY3 = 21
-pi.set_mode(RELAY1,pigpio.OUTPUT)
-pi.set_mode(RELAY2,pigpio.OUTPUT)
-pi.set_mode(RELAY3,pigpio.OUTPUT)
+
 BUTTON1 = 2
 BUTTON2 = 3
 BUTTON3 = 4
+
+pi.set_mode(RELAY1,pigpio.OUTPUT)
+pi.set_mode(RELAY2,pigpio.OUTPUT)
+pi.set_mode(RELAY3,pigpio.OUTPUT)
+
 pi.set_mode(BUTTON1,pigpio.OUTPUT)
 pi.set_mode(BUTTON2,pigpio.OUTPUT)
 pi.set_mode(BUTTON3,pigpio.OUTPUT)
@@ -45,7 +48,7 @@ def RelayController(rel, reloff1, reloff2):
     pi.write(rel.numb,0)
 
 def RelayClear(rel1, rel2, rel3):
-
+    print("Clearing All relays, turning off all devices")
     if rel1.status == 1:
         pi.gpio_trigger(rel1.button, 10, 1)
         rel1.status = 0
