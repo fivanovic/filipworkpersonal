@@ -43,6 +43,20 @@ def RelayController(rel, reloff1, reloff2):
     pi.write(reloff2.numb, 0)
     pi.write(rel.numb,1)
 
+def RelayClear(rel1, rel2, rel3):
+    
+    if rel1.status == 1:
+        pi.gpio_trigger(rel1.button)
+        rel1.status = 0
+    if rel2.status == 1:
+        pi.gpio_trigger(rel2.button)
+        rel2.status = 0
+    if rel3.status == 1:
+        pi.gpio_trigger(rel3.button)
+        rel3.status = 0
+    pi.write(rel1.numb, 0)
+    pi.write(rel2.numb, 0)
+    pi.write(rel3.numb, 0)
 
 while True:
     selection = input("Select Testing Device")
@@ -56,6 +70,6 @@ while True:
         Relaycontroller(R3,R2,R1)
 
     elif selection == "4":
-        
+        RelayClear(R1,R2,R3)
     else:
         print("Please select 1, 2 or 3. Press 4 to clear all relays")
