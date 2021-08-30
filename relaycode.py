@@ -44,7 +44,7 @@ def RelayController(rel, reloff1, reloff2):
     pi.write(rel.numb,1)
 
 def RelayClear(rel1, rel2, rel3):
-    
+
     if rel1.status == 1:
         pi.gpio_trigger(rel1.button)
         rel1.status = 0
@@ -61,10 +61,10 @@ def RelayClear(rel1, rel2, rel3):
 while True:
     selection = input("Select Testing Device")
     if selection == "1":
-        Relaycontroller(R1,R2,R3)
+        RelayController(R1,R2,R3)
 
     elif selection == "2":
-        Relaycontroller(R2,R1,R3)
+        RelayController(R2,R1,R3)
 
     elif selection == "3":
         Relaycontroller(R3,R2,R1)
