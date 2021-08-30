@@ -14,4 +14,6 @@ BUTTON3 = 4
 
 while True:
     selection = input("Select Testing Device")
-    print(selection)
+    if selection == "1":
+        print("Device 1 Selected")
+        
