@@ -19,6 +19,7 @@ class Relay:
         self.numb = numb
         self.button = button
         self.status = status
+        self.id = id
 
 R1 = Relay(RELAY1,BUTTON1,0,1)
 R2 = Relay(RELAY2,BUTTON2,0,2)
