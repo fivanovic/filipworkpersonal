@@ -35,6 +35,9 @@ def RelayController(rel, reloff1, reloff2):
     global R3
 
     print("Device %d Selected" % rel.id)
+    pi.write(reloff1.numb, 1)
+    pi.write(reloff2.numb, 1)
+    pi.write(rel.numb,0)
     pi.gpio_trigger(rel.button, 10, 1) #needs to be looked at in terms of polarity of buttons and potential necessity of pullup resistor
     rel.status = 1
     if reloff1.status == 1:
@@ -43,9 +46,7 @@ def RelayController(rel, reloff1, reloff2):
     if reloff2.status == 1:
         pi.gpio_trigger(reloff2.button, 10 ,1)
         reloff2.status = 0
-    pi.write(reloff1.numb, 1)
-    pi.write(reloff2.numb, 1)
-    pi.write(rel.numb,0)
+
 
 def RelayClear(rel1, rel2, rel3):
     print("Clearing All relays, turning off all devices")
