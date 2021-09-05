@@ -63,7 +63,7 @@ class PinList(Resource):
 
     @ns.marshal_list_with(pin_model)
     def get(self):
-        """"list all pins""""
+        """list all pins"""
         return pin_util.pins
 
     @ns.exect(pin_model)
