@@ -1,5 +1,5 @@
-import flask
-import flask_restplus
+from flask import Flask
+from flask_restplus import Api, Resource, fields
 #import lib8relind
 import pigpio
 pi = pigpio.pi()
