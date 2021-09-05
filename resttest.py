@@ -25,7 +25,7 @@ class PinUtil(object):
         for pin in self.pins:
             if pin['id'] == id:
                 return pin
-        api.abort(404, f "pin {id} does not exist.")
+        api.abort(404, f"pin {id} does not exist.")
 
     def create(self, data):
         pin = data
