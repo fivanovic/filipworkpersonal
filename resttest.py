@@ -34,9 +34,9 @@ class PinUtil(object):
         pi.set_mode(pin['pin_num'],pigpio.OUTPUT)
 
         if pin['state'] == 'off':
-            pi.write(pin['pin_num'],0)
-        elif pin['state'] == 'on':
             pi.write(pin['pin_num'],1)
+        elif pin['state'] == 'on':
+            pi.write(pin['pin_num'],0)
 
         return pin
 
