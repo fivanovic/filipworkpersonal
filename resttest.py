@@ -66,7 +66,7 @@ class PinList(Resource):
         """list all pins"""
         return pin_util.pins
 
-    @ns.exect(pin_model)
+    @ns.expect(pin_model)
     @ns.marshal_with(pin_model, code=201)
     def post(self):
         """create a new pin"""
