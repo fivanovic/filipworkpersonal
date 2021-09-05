@@ -1,4 +1,4 @@
-import Flask
+import flask
 import flask_restplus
 #import lib8relind
 import pigpio
