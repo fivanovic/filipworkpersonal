@@ -111,4 +111,4 @@ pin_util.create({'pin_num': 3, 'use': 'button', 'state': 'off'})
 pin_util.create({'pin_num': 4, 'use': 'button', 'state': 'off'})
 
 if __name__ == '__main__':
-    app.run(app.run(host="0.0.0.0", debug=True))
+    app.run(host="0.0.0.0", debug=True)
