@@ -16,7 +16,7 @@ pin_model = api.model('pins', {
     'use': fields.String(required=True, description='what the pin is being used for'),
     'state': fields.String(required=True, description='Pin on or off'),
     'button': fields.Integer(required=True, description='related button')
-})
+}, mask='{state}')
 
 class PinUtil(object):
     def __init__(self):
@@ -101,7 +101,7 @@ class Pin(Resource):
         #"""update a pin given its identifier"""
         #return pin_util.update(id, api.payload)
 
-    @ns.expect(pin_model['id'], pin_model['state'])
+    @ns.expect(pin_model)
     @ns.marshal_with(pin_model['state'])
     def patch(self, id):
         """partially update a pin given its identifier"""
