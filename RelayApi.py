@@ -101,8 +101,8 @@ class Pin(Resource):
         #"""update a pin given its identifier"""
         #return pin_util.update(id, api.payload)
 
-    @ns.expect(pin_model.'state')
-    @ns.marshal_with(pin_model, mask='state')
+    @ns.expect(pin_model)
+    @ns.marshal_with(pin_model['state']')
     def patch(self, id):
         """partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
