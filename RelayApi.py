@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
+import requests
 #import lib8relind
 import pigpio
 pi = pigpio.pi()
@@ -13,7 +14,8 @@ pin_model = api.model('pins', {
     'id': fields.Integer(readonly=True, description='pin unique identifier'),
     'pin_num': fields.Integer(required=True, description='gpio pin number'),
     'use': fields.String(required=True, description='what the pin is being used for'),
-    'state': fields.String(required=True, description='Pin on or off')
+    'state': fields.String(required=True, description='Pin on or off'),
+    'button': fields.Integer(required=True, description='related button')
 })
 
 class PinUtil(object):
@@ -35,8 +37,10 @@ class PinUtil(object):
 
         if pin['state'] == 'off':
             pi.write(pin['pin_num'],1)
+            pi.write(pin['button'],0)
         elif pin['state'] == 'on':
             pi.write(pin['pin_num'],0)
+            pi.write(pin['button'],1)
 
         return pin
 
@@ -47,8 +51,10 @@ class PinUtil(object):
 
         if pin['state'] == 'off':
             pi.write(pin['pin_num'],1)
+            pi.write(pin['button'],0)
         elif pin['state'] == 'on':
             pi.write(pin['pin_num'],0)
+            pi.write(pin['button'],1)
 
         return pin
 
@@ -101,16 +107,10 @@ class Pin(Resource):
         """partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
-<input type="submit" name = "test" value = "test">        
-
 pin_util = PinUtil()
-pin_util.create({'pin_num': 26, 'use': 'relay', 'state': 'off'})
-pin_util.create({'pin_num': 20, 'use': 'relay', 'state': 'off'})
-pin_util.create({'pin_num': 21, 'use': 'relay', 'state': 'off'})
-
-pin_util.create({'pin_num': 2, 'use': 'button', 'state': 'off'})
-pin_util.create({'pin_num': 3, 'use': 'button', 'state': 'off'})
-pin_util.create({'pin_num': 4, 'use': 'button', 'state': 'off'})
+pin_util.create({'pin_num': 26, 'use': 'relay', 'state': 'off', 'button': 2})
+pin_util.create({'pin_num': 20, 'use': 'relay', 'state': 'off', 'button': 3})
+pin_util.create({'pin_num': 21, 'use': 'relay', 'state': 'off', 'button': 4})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
