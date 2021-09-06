@@ -101,6 +101,8 @@ class Pin(Resource):
         """partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
+<input type="submit" name = "test" value = "test">        
+
 pin_util = PinUtil()
 pin_util.create({'pin_num': 26, 'use': 'relay', 'state': 'off'})
 pin_util.create({'pin_num': 20, 'use': 'relay', 'state': 'off'})
