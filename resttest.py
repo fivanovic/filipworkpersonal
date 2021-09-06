@@ -78,27 +78,27 @@ class PinList(Resource):
 class Pin(Resource):
     """shows a single pin item and lets you update/delete"""
 
-    #@ns.marshal_with(pin_model)
-    #def get(self, id):
-        #"""fetch a pin given its identifier"""
-        #return pin_util.get(id)
+    @ns.marshal_with(pin_model)
+    def get(self, id):
+        """fetch a pin given its identifier"""
+        return pin_util.get(id)
 
-    #@ns.response(204, 'pin deleted')
-    #def delete(self,id):
-        #"""delete a pin given it identifier"""
-        #pin_util.delete(id)
-        #return '', 204
+    @ns.response(204, 'pin deleted')
+    def delete(self,id):
+        """delete a pin given it identifier"""
+        pin_util.delete(id)
+        return '', 204
 
-    #@ns.expect(pin_model, validate=True)
-    #@ns.marshal_with(pin_model)
-    #def put(self, id):
-        #"""update a pin given its identifier"""
-        #return pin_util.update(id, api.payload)
+    @ns.expect(pin_model, validate=True)
+    @ns.marshal_with(pin_model)
+    def put(self, id):
+        """update a pin given its identifier"""
+        return pin_util.update(id, api.payload)
 
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
-    def RelayControl(self, id):
-        """Switch on relays and ascociated boards"""
+    def patch(self, id):
+        """partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
 pin_util = PinUtil()
