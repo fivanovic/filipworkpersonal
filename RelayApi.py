@@ -65,10 +65,10 @@ class PinUtil(object):
 @ns.param('id', 'the pin identifier')
 class Pin(Resource):
     """shows a single pin item and lets you update/delete"""
-    
+
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
-    def patch(self, id):
+    def relay(self, id):
         """partially update a pin given its identifier"""
         return pin_util.update(id, api.payload)
 
