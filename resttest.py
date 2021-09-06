@@ -89,11 +89,11 @@ class Pin(Resource):
         #pin_util.delete(id)
         #return '', 204
 
-    @ns.expect(pin_model, validate=True)
-    @ns.marshal_with(pin_model)
-    def put(self, id):
-        """update a pin given its identifier"""
-        return pin_util.update(id, api.payload)
+    #@ns.expect(pin_model, validate=True)
+    #@ns.marshal_with(pin_model)
+    #def put(self, id):
+        #"""update a pin given its identifier"""
+        #return pin_util.update(id, api.payload)
 
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
