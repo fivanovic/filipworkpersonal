@@ -61,16 +61,16 @@ class PinUtil(object):
 class PinList(Resource):
     """shows a list of all pins, lets you POST to add new pins"""
 
-    @ns.marshal_list_with(pin_model)
-    def get(self):
-        """list all pins"""
-        return pin_util.pins
+    #@ns.marshal_list_with(pin_model)
+    #def get(self):
+        #"""list all pins"""
+        #return pin_util.pins
 
-    @ns.expect(pin_model)
-    @ns.marshal_with(pin_model, code=201)
-    def post(self):
-        """create a new pin"""
-        return pin_util.create(api.payload)
+    #@ns.expect(pin_model)
+    #@ns.marshal_with(pin_model, code=201)
+    #def post(self):
+        #"""create a new pin"""
+        #return pin_util.create(api.payload)
 
 @ns.route('/<int:id>')
 @ns.response(404, 'pin not found')
