@@ -83,11 +83,11 @@ class Pin(Resource):
         #"""fetch a pin given its identifier"""
         #return pin_util.get(id)
 
-    @ns.response(204, 'pin deleted')
-    def delete(self,id):
-        """delete a pin given it identifier"""
-        pin_util.delete(id)
-        return '', 204
+    #@ns.response(204, 'pin deleted')
+    #def delete(self,id):
+        #"""delete a pin given it identifier"""
+        #pin_util.delete(id)
+        #return '', 204
 
     @ns.expect(pin_model, validate=True)
     @ns.marshal_with(pin_model)
