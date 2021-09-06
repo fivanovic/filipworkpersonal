@@ -58,14 +58,43 @@ class PinUtil(object):
         self.pins.remove(pin)
 
 @ns.route('/') #this is using the pins namespace
+class PinList(Resource):
+    """shows a list of all pins, lets you POST to add new pins"""
 
+    #@ns.marshal_list_with(pin_model)
+    #def get(self):
+        #"""list all pins"""
+        #return pin_util.pins
+
+    #@ns.expect(pin_model)
+    #@ns.marshal_with(pin_model, code=201)
+    #def post(self):
+        #"""create a new pin"""
+        #return pin_util.create(api.payload)
 
 @ns.route('/<int:id>')
 @ns.response(404, 'pin not found')
 @ns.param('id', 'the pin identifier')
 class Pin(Resource):
     """shows a single pin item and lets you update/delete"""
-    
+
+    #@ns.marshal_with(pin_model)
+    #def get(self, id):
+        #"""fetch a pin given its identifier"""
+        #return pin_util.get(id)
+
+    #@ns.response(204, 'pin deleted')
+    #def delete(self,id):
+        #"""delete a pin given it identifier"""
+        #pin_util.delete(id)
+        #return '', 204
+
+    #@ns.expect(pin_model, validate=True)
+    #@ns.marshal_with(pin_model)
+    #def put(self, id):
+        #"""update a pin given its identifier"""
+        #return pin_util.update(id, api.payload)
+
     @ns.expect(pin_model)
     @ns.marshal_with(pin_model)
     def patch(self, id):
