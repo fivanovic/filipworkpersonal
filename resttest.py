@@ -78,10 +78,10 @@ class PinList(Resource):
 class Pin(Resource):
     """shows a single pin item and lets you update/delete"""
 
-    @ns.marshal_with(pin_model)
-    def get(self, id):
-        """fetch a pin given its identifier"""
-        return pin_util.get(id)
+    #@ns.marshal_with(pin_model)
+    #def get(self, id):
+        #"""fetch a pin given its identifier"""
+        #return pin_util.get(id)
 
     @ns.response(204, 'pin deleted')
     def delete(self,id):
